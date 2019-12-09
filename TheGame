@@ -1,0 +1,83 @@
+// tic tat toe.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+char num [10] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+int um = 2;
+char playerSign;
+bool gameOver = false;
+
+void draw()
+{
+	cout << endl;
+	cout << "     |   |   " << endl;
+	cout << "   " << num[1] << " | " << num[2] << " | " << num[3] << " " << endl;
+	cout << " ____|___|____" << endl;
+	cout << "     |   |   " << endl; 
+	cout << "   " << num[4] << " | " << num[5] << " | " << num[6] << " " << endl;
+	cout << " ____|___|____" << endl;
+	cout << "     |   |   " << endl;
+	cout << "   " << num[7] << " | " << num[8] << " | " << num[9] << " " << endl;
+	cout << "     |   |   " << endl;
+}
+
+void playerOorX()
+{
+	if (um % 2 == 0)
+		playerSign = 'O';
+	else
+		playerSign = 'X';
+}
+
+void input()
+{
+	int userInput;
+	cout << "Please input an unoccupied number - ";
+	cin >> userInput;
+
+	while (num[userInput] == 'X' || num[userInput] == 'O')
+	{
+		cout << endl << "Invalid number entered. Please enter an unoccupied number. ";
+		cin >> userInput;
+	}
+
+	num[userInput] = playerSign;
+
+	system ("cls");
+	um++;
+}
+
+void game()
+{
+	if (num[1] == 'X' && num[2] == 'X' && num[3] == 'X' || num[1] == 'X' && num[5] == 'X' && num[9] == 'X'
+		|| num[4] == 'X' && num[5] == 'X' && num[6] == 'X' || num[7] == 'X' && num[8] == 'X' && num[9] == 'X'
+		|| num[2] == 'X' && num[5] == 'X' && num[8] == 'X' || num[3] == 'X' && num[6] == 'X' && num[9] == 'X'
+		|| num[3] == 'X' && num[5] == 'X' && num[7] == 'X' || num[1] == 'X' && num[4] == 'X' && num[7] == 'X')
+	{
+		cout << "Player 2 wins! Thanks for playing!" << endl << endl;
+	}
+
+	if (num[1] == 'O' && num[2] == 'O' && num[3] == 'O' || num[1] == 'O' && num[5] == 'O' && num[9] == 'O'
+		|| num[4] == 'O' && num[5] == 'O' && num[6] == 'O' || num[7] == 'O' && num[8] == 'O' && num[9] == 'O'
+		|| num[2] == 'O' && num[5] == 'O' && num[8] == 'O' || num[3] == 'O' && num[6] == 'O' && num[9] == 'O'
+		|| num[3] == 'O' && num[5] == 'O' && num[7] == 'O' || num[1] == 'O' && num[4] == 'O' && num[7] == 'O')
+	{
+		cout << "Player 1 wins! Thanks for playing!" << endl << endl;
+		gameOver = true;
+	}
+}
+
+int main()
+{
+	while (gameOver != true)
+	{
+		draw();
+		playerOorX();
+		input();
+		game();
+	}
+}
+
