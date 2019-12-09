@@ -68,6 +68,11 @@ void game()
 		cout << "Player 1 wins! Thanks for playing!" << endl << endl;
 		gameOver = true;
 	}
+	if (gameOver != true && turn == 9)
+	{
+		cout << "The Game is a Draw!" << endl;
+		gameOver = true;
+	}
 }
 
 int main()
