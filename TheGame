@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-char num [10] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+char num [17] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', ' };
 int um = 2;
 char playerSign;
 bool gameOver = false;
@@ -13,15 +13,15 @@ bool gameOver = false;
 void draw()
 {
 	cout << endl;
-	cout << "     |   |   " << endl;
-	cout << "   " << num[1] << " | " << num[2] << " | " << num[3] << " " << endl;
-	cout << " ____|___|____" << endl;
-	cout << "     |   |   " << endl; 
-	cout << "   " << num[4] << " | " << num[5] << " | " << num[6] << " " << endl;
-	cout << " ____|___|____" << endl;
-	cout << "     |   |   " << endl;
-	cout << "   " << num[7] << " | " << num[8] << " | " << num[9] << " " << endl;
-	cout << "     |   |   " << endl;
+	cout << "     |   |   |   " << endl;
+	cout << "   " << num[1] << " | " << num[2] << " | " << num[3] << " | " << num[4] << " " endl;
+	cout << " ____|___|___|____" << endl;
+	cout << "     |   |   |   " << endl;
+	cout << "   " << num[1] << " | " << num[2] << " | " << num[3] << " | " << num[4] << " " endl;
+	cout << " ____|___|___|____" << endl;
+	cout << "     |   |   |   " << endl;
+	cout << "   " << num[1] << " | " << num[2] << " | " << num[3] << " | " << num[4] << " " endl;
+	cout << " ____|___|___|____" << endl;
 }
 
 void playerOorX()
@@ -66,6 +66,11 @@ void game()
 		|| num[3] == 'O' && num[5] == 'O' && num[7] == 'O' || num[1] == 'O' && num[4] == 'O' && num[7] == 'O')
 	{
 		cout << "Player 1 wins! Thanks for playing!" << endl << endl;
+		gameOver = true;
+	}
+	if (gameOver != true && turn == 9)
+	{
+		cout << "The Game is a Draw!" << endl;
 		gameOver = true;
 	}
 }
